@@ -1,0 +1,17 @@
+version: '3.7'
+services:
+  marvel-restassured-automation:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    #image: marvel-restassured-automation
+    container_name: marvel-restassured
+    environment:
+      TZ: America/Sao_Paulo    
+    ports:
+      - "8085:8085"
+    networks:
+      - marvel-network 
+networks:
+  marvel-network:
+    driver: bridge

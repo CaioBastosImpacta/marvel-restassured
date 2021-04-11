@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class GetCharactersMatchers {
 
-    public static void verifySuccess(JsonPath jsonPath) {
+    public static void verifyAllCharactersSuccess(JsonPath jsonPath) {
         assertAll(
                 () -> assertEquals(200, jsonPath.getInt("code")),
                 () -> assertEquals("Ok", jsonPath.getString("status")),
@@ -124,6 +124,40 @@ public class GetCharactersMatchers {
                 () -> assertEquals("Avengers: The Initiative (2007) #14, Spotlight Variant - Int", jsonPath.getString("data.results[0].stories.items[19].name")),
                 () -> assertEquals("interiorStory", jsonPath.getString("data.results[0].stories.items[19].type")),
                 () -> assertEquals(20, jsonPath.getInt("data.results[0].stories.returned"))
+        );
+    }
+
+    public static void verifyIdCharacterSuccess(JsonPath jsonPath) {
+        assertAll(
+                () -> assertEquals(200, jsonPath.getInt("code")),
+                () -> assertEquals("Ok", jsonPath.getString("status")),
+                () -> assertEquals("© 2021 MARVEL", jsonPath.getString("copyright")),
+                () -> assertEquals("Data provided by Marvel. © 2021 MARVEL", jsonPath.getString("attributionText")),
+                () -> assertEquals("<a href=\"http://marvel.com\">Data provided by Marvel. © 2021 MARVEL</a>", jsonPath.getString("attributionHTML")),
+                () -> assertEquals(0, jsonPath.getInt("data.offset")),
+                () -> assertEquals(20, jsonPath.getInt("data.limit")),
+                () -> assertEquals(1, jsonPath.getInt("data.total")),
+                () -> assertEquals(1, jsonPath.getInt("data.count")),
+                () -> assertEquals(1016823, jsonPath.getInt("data.results[0].id")),
+                () -> assertEquals("Abomination (Ultimate)", jsonPath.getString("data.results[0].name")),
+                () -> assertEquals("", jsonPath.getString("data.results[0].description")),
+                () -> assertEquals("2012-07-10T19:11:52-0400", jsonPath.getString("data.results[0].modified")),
+                () -> assertEquals("http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available", jsonPath.getString("data.results[0].thumbnail.path")),
+                () -> assertEquals("jpg", jsonPath.getString("data.results[0].thumbnail.extension")),
+                () -> assertEquals("http://gateway.marvel.com/v1/public/characters/1016823", jsonPath.getString("data.results[0].resourceURI")),
+                () -> assertEquals(2, jsonPath.getInt("data.results[0].comics.available")),
+                () -> assertEquals("http://gateway.marvel.com/v1/public/characters/1016823/comics", jsonPath.getString("data.results[0].comics.collectionURI")),
+                () -> assertEquals("http://gateway.marvel.com/v1/public/comics/40638", jsonPath.getString("data.results[0].comics.items[0].resourceURI")),
+                () -> assertEquals("Hulk (2008) #50", jsonPath.getString("data.results[0].comics.items[0].name")),
+                () -> assertEquals(2, jsonPath.getInt("data.results[0].series.available")),
+                () -> assertEquals("http://gateway.marvel.com/v1/public/characters/1016823/series", jsonPath.getString("data.results[0].series.collectionURI"))
+        );
+    }
+
+    public static void verifyIdCharacterNotFound(JsonPath jsonPath) {
+        assertAll(
+                () -> assertEquals("404", jsonPath.getString("code")),
+                () -> assertEquals("We couldn't find that character", jsonPath.getString("status"))
         );
     }
 }
