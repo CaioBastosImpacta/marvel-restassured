@@ -184,4 +184,11 @@ public class GetCharactersMatchers {
                 () -> assertEquals("We couldn't find that character", jsonPath.getString("status"))
         );
     }
+
+    public static void verifyIdCharacterConflict(JsonPath jsonPath) {
+        assertAll(
+                () -> assertEquals("MissingParameter", jsonPath.getString("code")),
+                () -> assertEquals("You must provide a user key.", jsonPath.getString("message"))
+        );
+    }
 }
