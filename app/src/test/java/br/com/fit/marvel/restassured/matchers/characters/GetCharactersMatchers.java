@@ -150,7 +150,31 @@ public class GetCharactersMatchers {
                 () -> assertEquals("http://gateway.marvel.com/v1/public/comics/40638", jsonPath.getString("data.results[0].comics.items[0].resourceURI")),
                 () -> assertEquals("Hulk (2008) #50", jsonPath.getString("data.results[0].comics.items[0].name")),
                 () -> assertEquals(2, jsonPath.getInt("data.results[0].series.available")),
-                () -> assertEquals("http://gateway.marvel.com/v1/public/characters/1016823/series", jsonPath.getString("data.results[0].series.collectionURI"))
+                () -> assertEquals("http://gateway.marvel.com/v1/public/characters/1016823/series", jsonPath.getString("data.results[0].series.collectionURI")),
+                () -> assertEquals("http://gateway.marvel.com/v1/public/series/3374", jsonPath.getString("data.results[0].series.items[0].resourceURI")),
+                () -> assertEquals("Hulk (2008 - 2012)", jsonPath.getString("data.results[0].series.items[0].name")),
+                () -> assertEquals("http://gateway.marvel.com/v1/public/series/474", jsonPath.getString("data.results[0].series.items[1].resourceURI")),
+                () -> assertEquals("Ultimate X-Men (2001 - 2009)", jsonPath.getString("data.results[0].series.items[1].name")),
+                () -> assertEquals(2, jsonPath.getInt("data.results[0].series.returned")),
+                () -> assertEquals(3, jsonPath.getInt("data.results[0].stories.available")),
+                () -> assertEquals("http://gateway.marvel.com/v1/public/characters/1016823/stories", jsonPath.getString("data.results[0].stories.collectionURI")),
+                () -> assertEquals("http://gateway.marvel.com/v1/public/stories/31883", jsonPath.getString("data.results[0].stories.items[0].resourceURI")),
+                () -> assertEquals("Free Preview of THE INCREDIBLE HULK #50", jsonPath.getString("data.results[0].stories.items[0].name")),
+                () -> assertEquals("interiorStory", jsonPath.getString("data.results[0].stories.items[0].type")),
+                () -> assertEquals("http://gateway.marvel.com/v1/public/stories/92098", jsonPath.getString("data.results[0].stories.items[1].resourceURI")),
+                () -> assertEquals("Hulk (2008) #50", jsonPath.getString("data.results[0].stories.items[1].name")),
+                () -> assertEquals("cover", jsonPath.getString("data.results[0].stories.items[1].type")),
+                () -> assertEquals("http://gateway.marvel.com/v1/public/stories/92099", jsonPath.getString("data.results[0].stories.items[2].resourceURI")),
+                () -> assertEquals("Interior #92099", jsonPath.getString("data.results[0].stories.items[2].name")),
+                () -> assertEquals("interiorStory", jsonPath.getString("data.results[0].stories.items[2].type")),
+                () -> assertEquals(3, jsonPath.getInt("data.results[0].stories.returned")),
+                () -> assertEquals(0, jsonPath.getInt("data.results[0].events.available")),
+                () -> assertEquals("http://gateway.marvel.com/v1/public/characters/1016823/events", jsonPath.getString("data.results[0].events.collectionURI")),
+                () -> assertEquals(0, jsonPath.getInt("data.results[0].events.returned")),
+                () -> assertEquals("detail", jsonPath.getString("data.results[0].urls[0].type")),
+                () -> assertEquals("http://marvel.com/characters/81/abomination?utm_campaign=apiRef&utm_source=90176a73844b0060d5b7824d6959bd01", jsonPath.getString("data.results[0].urls[0].url")),
+                () -> assertEquals("comiclink", jsonPath.getString("data.results[0].urls[1].type")),
+                () -> assertEquals("http://marvel.com/comics/characters/1016823/abomination_ultimate?utm_campaign=apiRef&utm_source=90176a73844b0060d5b7824d6959bd01", jsonPath.getString("data.results[0].urls[1].url"))
         );
     }
 
