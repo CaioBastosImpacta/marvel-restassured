@@ -10,6 +10,6 @@ import org.junit.runner.RunWith;
         plugin = {"pretty", "html:target/cucumber/marvel"},
         glue = "br.com.fit.marvel.restassured.step",
         tags = "@Regressivo")
-public class RunnerCucumber {
+public class RunnerCucumberTest {
 
 }
